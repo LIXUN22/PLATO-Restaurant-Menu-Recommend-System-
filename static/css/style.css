@@ -1,0 +1,459 @@
+/* Enhanced High-Tech Blue Theme for Gourmet Guide */
+:root {
+  --primary-color: #0066ff; /* Changed to a stronger blue */
+  --primary-dark: #0052cc;
+  --secondary-color: #1a2b45;
+  --accent-color: #00ccff; /* Bright blue accent */
+  --accent-secondary: #4d94ff;
+  --light-color: #e6f2ff;
+  --dark-color: #0a1629;
+  --success-color: #00cc99;
+  --warning-color: #ffcc00;
+  --danger-color: #ff3366;
+  --text-color: #333;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
+  --neon-shadow: 0 0 15px rgba(0, 204, 255, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --max-width: 1200px;
+  --receipt-bg: #fff;
+  --receipt-text: #333;
+  --receipt-secondary-text: #777;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f0f5ff;
+  color: var(--text-color);
+  position: relative;
+  min-height: 100vh;
+}
+
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #0033cc 0%, #00a1ff 100%);
+  opacity: 0.05;
+  background-size: 300px 300px;
+  z-index: -1;
+}
+
+/* Add animated gradient background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    125deg,
+    rgba(0, 102, 255, 0.05) 0%,
+    rgba(0, 204, 255, 0.05) 100%
+  );
+  background-size: 400% 400%;
+  z-index: -2;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Header */
+header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--accent-color) 100%
+  );
+  color: white;
+  padding: 40px 0;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 a25,25 0 1,1 50,0 a25,25 0 1,1 -50,0" stroke="white" stroke-opacity="0.05" stroke-width="1" fill="none"/></svg>')
+    repeat;
+  background-size: 100px 100px;
+  z-index: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo i {
+  font-size: 2.8rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Enhanced Card styles */
+.card {
+  background: var(--glass-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 204, 255, 0.3);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--neon-shadow), var(--box-shadow);
+  border-color: rgba(0, 204, 255, 0.5);
+}
+
+.card-header {
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tech Pattern Overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,0 L100,100 L0,100 Z" stroke="%230066ff" stroke-opacity="0.05" stroke-width="0.5" fill="none"/><circle cx="50" cy="50" r="20" stroke="%2300ccff" stroke-opacity="0.05" stroke-width="0.5" fill="none"/><path d="M20,20 L80,20 L80,80 L20,80 Z" stroke="%230066ff" stroke-opacity="0.05" stroke-width="0.5" fill="none"/></svg>')
+    repeat;
+  background-size: 100px 100px;
+  z-index: -1;
+  opacity: 0.5;
+  border-radius: var(--border-radius);
+}
+
+/* Enhanced Receipt styles */
+.receipt {
+  background: var(--receipt-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 40px;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  transform-origin: top center;
+  animation: receiptAppear 0.5s ease-out forwards;
+  border-left: 4px solid var(--primary-color);
+  border-right: 4px solid var(--accent-color);
+}
+
+@keyframes receiptAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  60% {
+    transform: translateY(10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.receipt::before,
+.receipt::after {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.receipt::before {
+  top: -15px;
+  left: -15px;
+}
+
+.receipt::after {
+  top: -15px;
+  right: -15px;
+}
+
+.restaurant-logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.restaurant-logo::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg) translateX(-200%);
+  animation: logoShine 3s infinite;
+}
+
+@keyframes logoShine {
+  0% {
+    transform: rotate(45deg) translateX(-200%);
+  }
+  20%,
+  100% {
+    transform: rotate(45deg) translateX(200%);
+  }
+}
+
+.restaurant-logo i {
+  font-size: 35px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.receipt-header h2 {
+  font-size: 2rem;
+  color: var(--receipt-text);
+  margin-bottom: 5px;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+/* Enhanced Receipt Item */
+.receipt-item {
+  margin-bottom: 25px;
+  animation: itemAppear 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(10px);
+  border-left: 3px solid var(--accent-color);
+  padding: 15px;
+  border-radius: 8px;
+  transition: var(--transition);
+  background-color: rgba(240, 245, 255, 0.5);
+}
+
+.receipt-item:hover {
+  background-color: rgba(0, 102, 255, 0.05);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 102, 255, 0.1);
+}
+
+@keyframes itemAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  background: linear-gradient(
+    to right,
+    var(--accent-color),
+    var(--primary-color)
+  );
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 102, 255, 0.4);
+}
+
+/* Enhanced Loader Animation */
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid var(--primary-color);
+  border-right: 5px solid var(--accent-color);
+  border-bottom: 5px solid var(--primary-dark);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0 0 30px rgba(0, 204, 255, 0.5);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+  }
+}
+
+/* Enhanced Footer */
+footer {
+  background: linear-gradient(
+    to right,
+    var(--secondary-color),
+    var(--dark-color)
+  );
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color),
+    var(--primary-color)
+  );
+  background-size: 200% 100%;
+  animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
